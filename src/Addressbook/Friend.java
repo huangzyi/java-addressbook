@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Friend extends MySQL{
+public class Friend extends MySQL implements FriendDao{
 	public String name;
 
 	public Friend() {
@@ -157,11 +157,11 @@ public class Friend extends MySQL{
 	}
 	public String string() {
 		return 		  "name="+this.name+
-		"  phonenumber="+this.phonenumber  +
+		"  groupname="+this.groupname+
+		"\nphonenumber="+this.phonenumber  +
 		"  sex="+this.sex +
 		"\nqq="+this.QQ +
-		"  wechat="+this.Wechat  +
-		"  groupname="+this.groupname ;
+		"  wechat="+this.Wechat;
 	}
 
 }

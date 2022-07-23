@@ -1,7 +1,10 @@
 package Addressbook;
 
+import java.security.MessageDigest;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.sql.*;
-public class User extends MySQL {
+public class User extends MySQL implements UserDao{
 	public String name;
 	public void User(String name, String password) {
 		this.name = name;
@@ -59,7 +62,7 @@ public String toString() {
         PreparedStatement stmt= conn.prepareStatement(sql);
         //System.out.println(sql);
         stmt.setString(1, n);
-        stmt.setString(2, psw);
+        stmt.setString(2, md5(psw));
         ResultSet rs= stmt.executeQuery();
         if(!rs.next()) ;
         else {
@@ -171,7 +174,7 @@ public String toString() {
 	
 	public  void insert(String n,String psw) throws Exception{
         Connection conn=MySQL.getConnection();
-        String sql="INSERT INTO user VALUES('" + n + "','" + psw+"')";
+        String sql="INSERT INTO user VALUES('" + n + "','" + md5(psw)+"')";
         PreparedStatement stmt= conn.prepareStatement(sql);
         int rs= stmt.executeUpdate();
         if(rs==1) {
@@ -179,5 +182,8 @@ public String toString() {
         };
         MySQL.closeAll(conn, stmt);
         return ;
+	}
+	public static String md5(String str) {
+		return DigestUtils.md5Hex(str);
 	}
 }

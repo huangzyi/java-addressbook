@@ -10,7 +10,7 @@ public class MySQL{
  
     // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "root";
     static {
         try {
             Class.forName(JDBC_DRIVER);

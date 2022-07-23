@@ -98,7 +98,7 @@ public class Login extends JFrame {
     public static void main(String[] args) {
        Login frm = new Login("login");  
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frm.setBounds(100, 100, 300, 120);
+        frm.setBounds(100, 100, 300, 200);
         frm.setVisible(true);
         
     }
